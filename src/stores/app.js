@@ -17,9 +17,9 @@ export const useAppStore = defineStore('auth', ()=>{
         },
         { headers: { 'Content-Type': 'application/json' } }
       );
-      console.log(data); 
+      // console.log(data); 
       user.value=data;
-      console.log(user.value.token)
+      // console.log(user.value.token)
       isAuthenticated.value=true
       localStorage.setItem('token', JSON.stringify(user.value.token));
     } catch (err) {
@@ -33,7 +33,7 @@ export const useAppStore = defineStore('auth', ()=>{
     isAuthenticated.value=false
    }
 
-   //if not logged-out LoadLoogedInUserDetails 
+   //if not logged-out LoadLoggedInUserDetails 
    const loadUser=async(token)=>{
     try{
       const {data}=await axios.get('https://dummyjson.com/auth/me',{

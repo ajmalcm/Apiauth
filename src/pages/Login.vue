@@ -5,9 +5,16 @@ import {useAppStore} from "../stores/app.js";
 const store=useAppStore();
 const router=useRouter();   
 
+onMounted(()=>{
+        const token=JSON.parse(localStorage.getItem("token"));
+        store.loadUser(token)
+    })
+
 watchEffect(()=>{
     if(store.isAuthenticated)
-    router.push("/home")
+    {
+        router.push("/home")
+    }
 })
 </script>
 
